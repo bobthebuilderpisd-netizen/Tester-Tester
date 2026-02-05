@@ -10,10 +10,11 @@
     <main class="page">
       <header class="hero">
         <p class="eyebrow">Proxy Portal</p>
-        <h1>Explore the web through a clean, private gateway.</h1>
+        <h1>Preview pages through a lightweight relay.</h1>
         <p class="lede">
-          This lightweight proxy interface routes requests through a public relay so
-          you can preview content without exposing your device directly.
+          This demo uses a public relay to fetch a text snapshot of a URL for quick
+          inspection. It is not an anonymity tool and does not hide activity from
+          your network provider.
         </p>
       </header>
 
@@ -33,6 +34,7 @@
           <div class="actions">
             <button type="submit" class="primary">Open via Proxy</button>
             <button type="button" id="sample-btn" class="ghost">Use Sample</button>
+            <button type="button" id="direct-btn" class="ghost">Open Directly</button>
           </div>
         </form>
 
@@ -56,21 +58,21 @@
         <div>
           <h2>How it works</h2>
           <p>
-            Enter a URL and the page loads through a public relay endpoint. The preview
-            is read-only and designed for quick inspection, summaries, and metadata
-            checks.
+            Enter a URL and the page loads through a public relay endpoint that
+            returns a simplified snapshot. The preview is read-only and designed
+            for quick inspection, summaries, and metadata checks.
           </p>
         </div>
         <div>
           <h2>Privacy tips</h2>
           <ul>
-            <li>Use HTTPS destinations whenever possible.</li>
-            <li>Avoid submitting private credentials through a proxy preview.</li>
-            <li>Check the relay provider policy before heavy usage.</li>
+            <li>This preview does not hide traffic from your ISP or network admin.</li>
+            <li>Avoid submitting private credentials through a relay preview.</li>
+            <li>Many sites block iframe previews with X-Frame-Options.</li>
           </ul>
         </div>
         <div>
-          <h2>Proxy status</h2>
+          <h2>Relay status</h2>
           <p>
             Relay: <strong>r.jina.ai</strong>
             <span class="badge">Online</span>

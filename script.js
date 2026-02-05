@@ -4,9 +4,10 @@ const status = document.getElementById("status");
 const frame = document.getElementById("preview-frame");
 const previewUrl = document.getElementById("preview-url");
 const sampleBtn = document.getElementById("sample-btn");
+const directBtn = document.getElementById("direct-btn");
 
 const PROXY_BASE = "https://r.jina.ai/http://";
-const SAMPLE_URL = "https://example.com";
+const SAMPLE_URL = "https://roblox.com";
 
 const updateStatus = (message, isError = false) => {
   status.textContent = message;
@@ -33,7 +34,9 @@ const loadProxy = (url) => {
   const proxyUrl = `${PROXY_BASE}${normalized}`;
   frame.src = proxyUrl;
   previewUrl.textContent = normalized;
-  updateStatus(`Proxying via ${proxyUrl}`);
+  updateStatus(
+    `Proxying via ${proxyUrl}. Some sites may block iframe previews or only show text.`
+  );
 };
 
 form.addEventListener("submit", (event) => {
@@ -46,4 +49,14 @@ sampleBtn.addEventListener("click", () => {
   loadProxy(SAMPLE_URL);
 });
 
-updateStatus("Enter a URL to preview it through the proxy relay.");
+directBtn.addEventListener("click", () => {
+  const normalized = normalizeUrl(targetInput.value.trim());
+  if (!normalized) {
+    updateStatus("Please enter a valid URL (include a domain).", true);
+    return;
+  }
+  window.open(normalized, "_blank", "noopener,noreferrer");
+  updateStatus("Opened the destination directly in a new tab.");
+});
+
+updateStatus("Enter a URL to preview it through the relay.");
